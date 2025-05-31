@@ -364,7 +364,7 @@ public class BasicTest {
 To execute the `BasicTest.java` file the code below should be pasted in a new terminal.
 
 ```bash
-mvn test -Dtest=DatabaseTest
+mvn test -Dtest=BasicTest.java
 ```
 > Note: For some reason mvn commands don't work sometimes in `pwsh` terminals make sure you use bash instead.
 

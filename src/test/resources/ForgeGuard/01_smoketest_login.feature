@@ -8,7 +8,7 @@ Feature: Login Functionality
     Given I am in the login page
     When I enter the valid credentials "practice" and "SuperSecretPassword!"
     Then I should be redirected to the secure page
-    And I should see a welcome message "Secure Area page for Automation Testing Practice"
+    And I should see a welcome message "You logged into a secure area!"
 
   @invalid-login
   Scenario: Invalid Login

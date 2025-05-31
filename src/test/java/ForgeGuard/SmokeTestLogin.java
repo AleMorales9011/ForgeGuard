@@ -45,7 +45,7 @@ public class SmokeTestLogin {
     public void i_enter_the_valid_credentials(String username, String password) {
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"username\"]")));
         WebElement passwordField = driver.findElement(By.xpath("//*[@id=\"password\"]"));
-        WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/button"));
+        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='login']/button")));
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         loginButton.click();
@@ -60,7 +60,7 @@ public class SmokeTestLogin {
 
     @Then("I should see a welcome message {string}")
     public void i_should_see_a_welcome_message(String expectedMessage) {
-        WebElement welcomeMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[4]/div/h1")));
+        WebElement welcomeMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"flash\"]")));
         assertTrue(welcomeMessage.isDisplayed(), "Welcome message is not displayed");
         assertEquals(expectedMessage, welcomeMessage.getText(), "The message does not match");
 
