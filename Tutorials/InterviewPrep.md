@@ -1,4 +1,3 @@
-
 # Selenium
 Selenium Web Driver : API. Interact with browser programmatically.
 ```java
