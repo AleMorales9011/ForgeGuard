@@ -364,7 +364,7 @@ public class BasicTest {
 To execute the `BasicTest.java` file the code below should be pasted in a new terminal.
 
 ```bash
-mvn test -Dtest=DatabaseTest
+mvn test -Dtest=BasicTest
 ```
 > Note: For some reason mvn commands don't work sometimes in `pwsh` terminals make sure you use bash instead.
 
@@ -720,6 +720,11 @@ public class ValidLogin {  // Declares the main class. This is the file name tha
 
 
 
+```
+# Step 10 Execute Test
+
+```bash
+mvn test -Dcucumber.features=src/test/resources/ForgeGuard/01_smoketest_login.feature
 ```
 
 # Congratulations - Functionality Test Completed!🚀✨

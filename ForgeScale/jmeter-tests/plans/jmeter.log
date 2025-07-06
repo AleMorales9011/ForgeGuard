@@ -1,0 +1,29 @@
+2025-06-18 07:38:36,777 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2025-06-18 07:38:36,799 INFO o.a.j.JMeter: Loading user properties from: C:\Program Files\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\user.properties
+2025-06-18 07:38:36,801 INFO o.a.j.JMeter: Loading system properties from: C:\Program Files\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\system.properties
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: Version 5.6.3
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: java.version=23.0.1
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: os.name=Windows 11
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: os.arch=amd64
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: os.version=10.0
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: file.encoding=UTF-8
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: java.awt.headless=true
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: Max memory     =1073741824
+2025-06-18 07:38:36,808 INFO o.a.j.JMeter: Available Processors =12
+2025-06-18 07:38:36,824 INFO o.a.j.JMeter: Default Locale=English (EN)
+2025-06-18 07:38:36,824 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2025-06-18 07:38:36,824 INFO o.a.j.JMeter: JMeterHome=C:\Program Files\apache-jmeter-5.6.3\apache-jmeter-5.6.3
+2025-06-18 07:38:36,824 INFO o.a.j.JMeter: user.dir  =C:\03JOB SEARCH\04ForgeGuard\ForgeGuard\ForgeScale\jmeter-tests\plans
+2025-06-18 07:38:36,824 INFO o.a.j.JMeter: PWD       =C:\03JOB SEARCH\04ForgeGuard\ForgeGuard\ForgeScale\jmeter-tests\plans
+2025-06-18 07:38:36,843 INFO o.a.j.JMeter: IP: 192.168.0.14 Name: AleHomeLab FullName: 192.168.0.14
+2025-06-18 07:38:36,856 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'C:\03JOB SEARCH\04ForgeGuard\ForgeGuard\ForgeScale\jmeter-tests\plans\jmeter-tests\reports\login_20250618_073835'
+2025-06-18 07:38:36,856 ERROR o.a.j.JMeter: An error occurred: 
+org.apache.jmeter.report.config.ConfigurationException: The file C:\03JOB SEARCH\04ForgeGuard\ForgeGuard\ForgeScale\jmeter-tests\plans\jmeter-tests\plans\jmeter_login_test_authenticate.jmx doesn't exist or can't be opened
+	at org.apache.jmeter.JMeter.runNonGui(JMeter.java:950) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeter.startNonGui(JMeter.java:940) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeter.start(JMeter.java:508) [ApacheJMeter_core.jar:5.6.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.apache.jmeter.NewDriver.main(NewDriver.java:259) [ApacheJMeter.jar:5.6.3]

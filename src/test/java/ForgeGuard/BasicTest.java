@@ -1,22 +1,24 @@
 package ForgeGuard;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.jupiter.api.Test;
 
 public class BasicTest {
+    private WebDriver driver;
 
-    @Test
-    public void testGooglePageTitle() {
-        // WebDriver setup
+    @Given("I'm at Google's Home Page")
+    public void GetToHomePage() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
-
-        // Open Google and print title
         driver.get("https://google.com");
-        System.out.println("Page Title: " + driver.getTitle());
+    }
 
+    @Then("I should be able to extract the Page Title")
+    public void ExtractTheTitle() {
+        System.out.println("Page Title: " + driver.getTitle());
         // Quit browser
         driver.quit();
     }
