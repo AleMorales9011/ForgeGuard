@@ -1,11 +1,10 @@
 # Selenium
-Selenium Web Driver : API. Interact with browser programmatically.
+- Selenium Web Driver : API. Interact with browser programmatically.
 ```java
 WebDriverManager driver = new ChromeDriver();
 ````
-Selenium IDE: Browser Extension. Record text and exports code.
-Selenium Grid: Platform. Run parallel test across browsers.
-Locators: Object. Defines strategy to find element
+- Selenium IDE: Browser Extension. Record text and exports code.
+- Locators: Object. Defines strategy to find element
 ```java
 By locatorById = By.id("username");
 By locatorByName = By.name("email");
@@ -15,17 +14,17 @@ By locatorsByCss = By.cssSelector("div.box");
 ```java
 WebElement input = driver.findElement(locatorById);
 ```
-Waits: Class. Handles wait strategies.
+- Waits: Class. Handles wait strategies.
 - Implicit Wait: Global wait applied to the entire WebDriver session.
 ```java
 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 ```
-Explicit Wait: Wait for specific condition
+- Explicit Wait: Wait for specific condition
 ```java
 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
 ```
-Custom(fluent) Wait: Advanced Explicit Wait
+- Custom(fluent) Wait: Advanced Explicit Wait
 ```java
 Wait<WebDriver> fluentWait = new FluentWait<>(driver)
         .withTimeout(Duration.ofSeconds(15))
@@ -33,46 +32,47 @@ Wait<WebDriver> fluentWait = new FluentWait<>(driver)
         .ignoring(NoSuchElementExecption.class);
 WebElement searchBox = fluentwait.until(driver1 -> driver1.findElement(By.id("search")));
 ```
-CrossBrowser Testing: Process. Ensure coverage across browsers.
-Selenium Grid: Class. Run test on other machines.
+- CrossBrowser Testing: Process. Ensure coverage across browsers.
+- Selenium Grid: Class. Run test on other machines.
 ```java
-ChromeOptions options = new ChromeOptions();
+ChromeOptions options = new ChromeOptions(); // or FirefoxOptions
 WebDriver driver = new RemoteWebDriver(new URL("https://localhost:4444"), options);
 ```
-Assertions(API Statements): Statement. Validate the outcome of tests.
-assertEquals: Equality
+- Assertions(API Statements): Statement. Validate the outcome of tests.
+- assertEquals: Equality
 ```java
 String actualTitle = driver.getTitle();
 Assertions.assertEquals("Example Domain", actualTitle);
 ```
-assertTrue: Truth
+- assertTrue: Truth
 ```java 
 WebElement logo = driver.findElement(By.id("logo"));
 Assertions.assertTrue(logo.isDisplayed());
 ```
-assertNotNull: Null Check
+- assertNotNull: Null Check
 ```java
 WebElement search = driver.findElement(By.name("q"));
 Assertions.assertNotNull(search);
 ```
-POM: Design pattern. Enhance reusability and maintainability.
-Page Object Class
+- POM: Design pattern. Enhance reusability and maintainability.
+- Page Object Class
 ```java
 public class GoogleHomePage {
-        private WebDriver driver;
-        private By searchBox = By.name("q");
-        public GoogleHomePage(WebDriver driver) {
-            this.driver = driver;
-        }
-        public void search (String keyword) {
-            WebElement box = driver.findElement(searchBox);
-            box.sendKeys(keyword);
-            box.submit();
-        }
+    private WebDriver driver;
+    private By searchBox = By.name("q");
+
+    public GoogleHomePage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void search(String keyword) {
+        WebElement box = driver.findElement(searchBox);
+        box.sendKeys(keyword);
+        box.submit();
     }
 }
 ```
-Test Class:
+- Test Class:
 ```java
 public class POMtest {
     public static void main(String[] args) {
@@ -84,22 +84,22 @@ public class POMtest {
     }
 }
 ```
-Headless Browser: Mode applied to a browser class.
+- Headless Browser: Mode applied to a browser class.
 ```java
 ChromeOptions options = new ChromeOptions();
-option.addArguments("--headless");
+options.addArguments("--headless");
 WebDriver driver = new ChromeDriver(options);
 ```
-Alerts: Interface. Switch context from Webdriver to pop up.
+- Alerts: Interface. Switch context from Webdriver to pop up.
 ```java
 driver.findElement(By.id("trigger")).click();
 Alert alert = driver.switchTo().alert();
 alert.accept();
 ```
-Screenshots: Interface with methods to take screenshots.
+- Screenshots: Interface with methods to take screenshots.
 ```java
 public class ScreenShots {
-    public static void main (String[] args) throws Exeption {
+    public static void main(String[] args) throws Exeption {
         WebDriver driver = new ChromeDriver();
         driver.get("https://google.com");
         if (!driver.getTitle().contains("Expected")) {
@@ -109,8 +109,8 @@ public class ScreenShots {
     }
 }
 ```
-Web Elements: Interface. Abstraction of HTML elements that allow interactions 
-via Interaction methods.
+- Web Elements: Interface. Abstraction of HTML elements that allow interactions 
+    via Interaction methods.
 ```java
 WebElement searchBox = driver.findElement(By.name("q"));
 searchBox.sendKeys("Selenium");
