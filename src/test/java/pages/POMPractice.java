@@ -32,13 +32,15 @@ public class POMPractice{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("q")));
     }
 
-    public void ImplicitWait () {
+    public void FluentWait () {
         Wait<WebDriver> fluent = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
         fluent.until(d-> searchBox.isDisplayed());
     }
+
+
 
 
 
