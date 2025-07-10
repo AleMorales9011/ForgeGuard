@@ -13,30 +13,30 @@ import java.time.Duration;
 
 public class AllInOneTest {
     @Test
-    public void testGoogleSearchWithEverything() throws Exception {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        WebDriver driver;
+    public void testGoogleSearchWithEverything() throws Exception { // Executes the tests from the Google Home Page.
+        ChromeOptions options = new ChromeOptions(); // Initialize the class ChromeOptions.
+        options.addArguments("--headless"); // Add the headless mode.
+        WebDriver driver;  // Creates a driver variable of type WebDriver.
 
-        boolean useGrid = false;
+        boolean useGrid = false; // Logic to implement Grid if required.
         if (useGrid) {
             driver = new RemoteWebDriver(new URL("https://localhost:4444"), options);
         } else {
             driver = new ChromeDriver(options);
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://google.com");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Implements implicit wait.
+        driver.get("https://google.com");  // Navigates to page.
 
-        AllInOnePage page = new AllInOnePage(driver);
-        Assertions.assertNotNull(page.searchBox);
-        page.waitForSearchBoxExplicit();
-        page.waitForSearchBoxFluent();
-        page.search("Selenium WebDriver");
+        AllInOnePage page = new AllInOnePage(driver); // Initialize the Page Object.
+        Assertions.assertNotNull(page.searchBox); // Asserts the  searchBox element is not null.
+        page.waitForSearchBoxExplicit(); // Call the explicit wait.
+        page.waitForSearchBoxFluent(); // Calls the fluent Wait.
+        page.search("Selenium WebDriver"); // Send keys to the search box.
 
-        Assertions.assertTrue(page.logo.isDisplayed(), "Logo is not visible");
-        Assertions.assertEquals("Selenium WebDriver - Google Search", driver.getTitle());
-        page.handleAlertIfExists();
-        page.takeScreenshotOnFailure("Selenium Webdriver");
-        driver.quit();
+        Assertions.assertTrue(page.logo.isDisplayed(), "Logo is not visible"); //Asserts the logo.
+        Assertions.assertEquals("Selenium WebDriver - Google Search", driver.getTitle()); // Asserts the Title.
+        page.handleAlertIfExists(); // Calls the Alert Handling method.
+        page.takeScreenshotOnFailure("Selenium Webdriver"); // Calls the screenshot method
+        driver.quit(); // Close the session.
     }
 }

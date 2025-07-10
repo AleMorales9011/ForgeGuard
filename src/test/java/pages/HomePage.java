@@ -13,47 +13,47 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 
-public class AllInOnePage {
-    WebDriver driver; // Declare a variable driver of type WebDriver
-    @FindBy(name = "q") // Use Page Factory to find the searchBox element by is name "q".
+public class HomePage {
+    WebDriver driver;
+    @FindBy(name= "q")
     public WebElement searchBox;
-    @FindBy(id = "logo") // Use Page Factory to find the logo element by is id "logo".
+    @FindBy(id = "logo")
     public WebElement logo;
 
-    public AllInOnePage(WebDriver driver) { // Constructor that creates a variable that takes a driver as input.
-        this.driver = driver; // It saves the driver into the driver variable.
-        PageFactory.initElements(driver, this); // Initialize all FindBy elements
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public void search(String keyword) { // Creates a method that takes a string keyword and send keys to the search box and submit the search.
+    public void search (String keyword){
         searchBox.sendKeys(keyword);
         searchBox.submit();
     }
 
-    public void waitForSearchBoxExplicit() { // Creates a method that creates an explicit wait for the searchBox element.
+    public void ExplicitWait (){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("q")));
     }
 
-    public void waitForSearchBoxFluent() { // Creates a custom wait for the search box element
+    public void CustomWait(){
         Wait<WebDriver> fluent = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
-        fluent.until(d -> searchBox.isDisplayed());
+        fluent.until(d->searchBox.isDisplayed());
     }
 
-    public void handleAlertIfExists() { // Exception handling with alerts.
+    public void HandleAlert() {
         try {
             Alert alert = driver.switchTo().alert();
-            System.out.println("Alert" + alert.getText());
+            System.out.println("Title is: " + driver.getTitle());
             alert.accept();
         } catch (NoAlertPresentException ignored) {
         }
     }
 
-    public void takeScreenshotOnFailure(String expectedTitle) throws Exception { // Take screenshot if something fails.
-        if (!driver.getTitle().contains(expectedTitle)) {
+    public void ScreenShotOnFailure(String expectedTitle) throws Exception {
+        if (!driver.getTitle().contains(expectedTitle)){
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Files.copy(src.toPath(), new File("fail.png").toPath(), StandardCopyOption.REPLACE_EXISTING);
         }

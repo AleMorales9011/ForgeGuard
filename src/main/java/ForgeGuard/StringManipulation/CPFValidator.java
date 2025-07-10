@@ -1,4 +1,4 @@
-package ForgeGuard;
+package ForgeGuard.StringManipulation;
 
 public class CPFValidator {
 
