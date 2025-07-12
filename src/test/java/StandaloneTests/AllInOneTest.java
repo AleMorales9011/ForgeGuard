@@ -24,6 +24,7 @@ public class AllInOneTest {
         } else {
             driver = new ChromeDriver(options);
         }
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); // Implements implicit wait.
         driver.get("https://google.com");  // Navigates to page.
 

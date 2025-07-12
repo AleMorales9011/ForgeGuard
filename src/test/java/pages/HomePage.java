@@ -11,11 +11,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.time.Duration;
+import java.time.*;
+
 
 public class HomePage {
     WebDriver driver;
-    @FindBy(name= "q")
+    @FindBy(name = "q")
     public WebElement searchBox;
     @FindBy(id = "logo")
     public WebElement logo;
@@ -25,20 +26,24 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void search (String keyword){
+    public void Navigate(){
+        driver.get("https://google.com");
+    }
+
+    public void search(String keyword) {
         searchBox.sendKeys(keyword);
         searchBox.submit();
     }
 
-    public void ExplicitWait (){
+    public void ExplicitWait() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("q")));
+        wait.until(ExpectedConditions.visibilityOf(searchBox));
     }
 
-    public void CustomWait(){
+    public void CustomWait() {
         Wait<WebDriver> fluent = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofSeconds(2))
+                .pollingEvery(Duration.ofSeconds(10))
                 .ignoring(NoSuchElementException.class);
         fluent.until(d->searchBox.isDisplayed());
     }
@@ -46,16 +51,17 @@ public class HomePage {
     public void HandleAlert() {
         try {
             Alert alert = driver.switchTo().alert();
-            System.out.println("Title is: " + driver.getTitle());
+            System.out.println("Alert Text: " + alert.getText());
             alert.accept();
         } catch (NoAlertPresentException ignored) {
         }
     }
 
-    public void ScreenShotOnFailure(String expectedTitle) throws Exception {
-        if (!driver.getTitle().contains(expectedTitle)){
+    public void ScreenShotOnFailure (String expectedTitle) throws Exception {
+        if(!driver.getTitle().contains(expectedTitle)){
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Files.copy(src.toPath(), new File("fail.png").toPath(), StandardCopyOption.REPLACE_EXISTING);
         }
     }
+
 }

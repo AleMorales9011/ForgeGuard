@@ -9,14 +9,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import pages.HomePage;
 
 import java.net.URL;
-import java.time.Duration;
 
 public class HomePageTest {
     @Test
-    public void Test () throws Exception {
-        WebDriver driver;
+    public void TestHomePage() throws Exception {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        WebDriver driver;
 
         boolean UseGrid = false;
         if (UseGrid){
@@ -24,19 +23,17 @@ public class HomePageTest {
         }else{
             driver = new ChromeDriver();
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://google.com");
 
         HomePage page = new HomePage(driver);
-        page.search("Selenium");
+        page.Navigate();
         Assertions.assertNotNull(page.searchBox);
+        Assertions.assertTrue(page.logo.isDisplayed());
+        Assertions.assertEquals("Selenium", driver.getTitle());
+        page.search("Selenium");
         page.ExplicitWait();
         page.CustomWait();
-        page.search("Selenium");
-        Assertions.assertTrue(page.logo.isDisplayed());
-        Assertions.assertEquals("Selenium - Google Search", driver.getTitle());
         page.HandleAlert();
-        page.ScreenShotOnFailure("Selenium");
+        page.ScreenShotOnFailure("Selenium - Google Search");
         driver.quit();
     }
 }
