@@ -1,6 +1,6 @@
 package ForgeGuard.StringManipulation;
 
-public class TicketValidator {
+public class UserInputValidator {
     public static void main(String[] args) {
         String rawTicket = "  name:   Amanda Estevez  ; email: AMANDA.Estevez@GMAIL.com   ; message:    My App Crashed 💥💥   ";
         String cleanedTicket = processTicket(rawTicket);
